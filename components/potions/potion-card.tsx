@@ -1,10 +1,9 @@
 import { getMagicalTypeIcon } from "@/utils";
-import { Badge } from "../ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { PotionType } from "@/types/github";
 import Link from "next/link";
 import { PotionHeader, PotionStats } from "./potion-components";
-
+import { Badge } from "../ui/badge";
 export const PotionCard = ({
   full_name,
   name,
@@ -36,11 +35,7 @@ export const PotionCard = ({
             <p className="text-sm flex items-center mb-1 gap-1.5 text-magic-light-purple">
               <span>✨</span>Effect: {potionEffect}
             </p>
-            <PotionStats
-              stars={stargazers_count}
-              forks={forks_count}
-              classNames="items-center text-xs text-muted-foreground"
-            />
+            <PotionStats stars={stargazers_count} forks={forks_count} />
           </div>
           <div className="items-center text-xs text-muted-foreground">
             <div className="flex items-center gap-2">
@@ -49,7 +44,6 @@ export const PotionCard = ({
                   key={index}
                   className="text-xs px-2 py-1 bg-magic-purple/15 text-white/80 hover:bg-magic-purple/25"
                 >
-                  {" "}
                   {topic}
                 </Badge>
               ))}
