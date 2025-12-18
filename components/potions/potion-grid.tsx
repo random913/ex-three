@@ -1,6 +1,6 @@
 import { PotionType } from "@/types/github";
 
-import { PotionCard } from "./potion-card";
+import { PotionCard } from "@/components/potions/potion-card";
 
 interface PotionGridProps {
   potions: PotionType[];

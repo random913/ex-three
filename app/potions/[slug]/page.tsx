@@ -12,7 +12,7 @@ export async function generateStaticParams() {
   ];
 
   return popularRepos.map((repo) => ({
-    slug: repo.replace(/\//g, "__"),
+    slug: repo.replace("/", "_"),
   }));
 }
 
@@ -23,7 +23,7 @@ export default async function PotionPage({
 }) {
   const { slug } = await params;
 
-  const [owner, repo] = slug.split("__");
+  const [owner, repo] = slug.split("_");
 
   if (!owner || !repo) {
     notFound();
