@@ -4,7 +4,7 @@ import {
   PotionInfoCard,
   PotionStats,
 } from "@/components/potions/potion-components";
-import { Badge, Calendar, CodeIcon, Github } from "lucide-react";
+import { Calendar, CodeIcon, Github, StarIcon } from "lucide-react";
 import Image from "next/image";
 
 interface PotionInfoType {
@@ -26,6 +26,14 @@ export default function PotionInfo({ potion }: PotionInfoType) {
     updated_at,
     magicalType,
   } = potion;
+
+  const brewingDifficulty = (forks_count / (stargazers_count || 1)) * 100;
+
+  const potency = Math.min(
+    5,
+    Math.max(1, Math.floor(stargazers_count / 50000))
+  );
+
   return (
     <main className="container mx-auto px-4 py-8">
       <div className="mb-8">
@@ -75,7 +83,7 @@ export default function PotionInfo({ potion }: PotionInfoType) {
         {/* {Right column} */}
         <div className="md:col-span-2">
           <div
-            className={` p-6 rounded 2xl border border-magic-purple/20  h-full`}
+            className={` p-6 rounded 2xl border border-magic-purple/20 mb-6`}
           >
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-linear-to-r from-magic-light-purple via-magic-purple to-magic-pink">
@@ -124,22 +132,43 @@ export default function PotionInfo({ potion }: PotionInfoType) {
                 </PotionInfoCard>
               </div>
             </div>
-            <div
-              className={` p-6 rounded 2xl border border-magic-purple/20  h-full`}
-            >
-              <h3 className="text-xl font-semibold mb-4 text-transparent bg-clip-text bg-linear-to-r from-magic-light-purple via-magic-purple to-magic-pink">
-                Magicla Properties
-              </h3>
+          </div>
+          <div className={` p-6 rounded 2xl border border-magic-purple/20 `}>
+            <h3 className="text-xl font-semibold mb-4 text-transparent bg-clip-text bg-linear-to-r from-magic-light-purple via-magic-purple to-magic-pink">
+              Magicla Properties
+            </h3>
 
-              <div className="grid cols-1 md:grid-cols-2 gap-6 mb-6">
-                <PotionInfoCard title="Brewing Difficulty">
-                  <div className="flex items-center gap-2"></div>
-                </PotionInfoCard>
-
-                <PotionInfoCard title="Potency"></PotionInfoCard>
-                <div className="mb-6">
-                  <PotionInfoCard title="Notes from the Alchemist"></PotionInfoCard>
+            <div className="grid cols-1 md:grid-cols-2 gap-6 mb-6">
+              <PotionInfoCard title="Brewing Difficulty">
+                <div className="flex items-center gap-2"></div>
+                <div className=" relative w-full h-2 bg-secondary/50 rounded-full overflow-hidden">
+                  <div
+                    className=" absolute h-full bg-linear-to-r from-magic-purple to-magic-pink rounded-b-full"
+                    style={{ width: `${brewingDifficulty}%` }}
+                  ></div>
                 </div>
+                <span className="ml-2 text-sm">
+                  {brewingDifficulty.toFixed(0)}%
+                </span>
+              </PotionInfoCard>
+
+              <PotionInfoCard title="Potency">
+                <div className="flex">
+                  {Array.from({ length: potency }).map((_, i) => (
+                    <span key={i} className="text-yellow-400">
+                      <StarIcon fill="currentColor" className="h-5 w-5" />
+                    </span>
+                  ))}
+                </div>
+              </PotionInfoCard>
+              <div className="mb-6 col-span-2">
+                <PotionInfoCard title="Notes from the Alchemist">
+                  <p className="italic text-small">
+                    &quot;Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit. Molestias dolor quae totam. Fugiat consequuntur harum
+                    ipsa laboriosam quo repudiandae cum?&quot;
+                  </p>
+                </PotionInfoCard>
               </div>
             </div>
           </div>

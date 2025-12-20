@@ -1,3 +1,4 @@
+import { PotionFilters } from "@/components/potions/potion-filters";
 import { PotionGrid } from "@/components/potions/potion-grid";
 import { fetchPotions } from "@/lib/github";
 
@@ -9,9 +10,12 @@ export default async function Home() {
         <h1 className="text-4xl font-bold md:text-5xl mb-4 text-transparent bg-clip-text bg-linear-to-r from-magic-light-purple via-magic-purple to-magic-pink">
           Open Source Spirit Shop
         </h1>
-        <p className="text-lg text-foreground/80 text-magic-light-purple">
+        <p className="text-lg text-magic-light-purple">
           Discover magical potions brewed from open source ingredients
         </p>
+      </div>
+      <div className="flex justify-center">
+        <PotionFilters />
       </div>
       <div className="mt-8">
         <PotionGrid potions={potions} />
