@@ -11,7 +11,7 @@ export function PotionFilters() {
           href={id === "all" ? "/" : `?type=${id}`}
           key={id}
           className={cn(
-            `flex items-center gap-2 bg-gradient-to-br to-transparent rounded-full p-2`,
+            `flex items-center gap-2 bg-linear-to-br to-transparent rounded-full p-2`,
             getFilterPillColor(id)
           )}
         >

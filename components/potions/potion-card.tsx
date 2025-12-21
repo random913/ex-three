@@ -28,7 +28,7 @@ export const PotionCard = ({
           <PotionHeader name={name} owner={{ login, avatar_url }} />
         </CardHeader>
         <CardContent className="p-6 pt-3">
-          <p className="text-sm text-foreground/70 mt-3 mb-4 line-clamp-3 h-[3.75rem] overflow-hidden text-ellipsis">
+          <p className="text-sm text-foreground/70 mt-3 mb-4 line-clamp-3 h-15 overflow-hidden text-ellipsis">
             {description}
           </p>
           <div className="mb-4">
